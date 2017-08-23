@@ -50,10 +50,11 @@ void Client::run() {
     int socket = prepare();
 
     str_len = read(socket, message, sizeof (message) - 1);
+    message[str_len] = '\0';
     if (str_len == -1) {
         perror("read() error");
     }
-
+    printf("str_len:%d\n",str_len);
     printf("Message from server : %s \n", message);
     close(socket);
 }

@@ -61,9 +61,10 @@ void Server::do_accept(int listener) {
         std::cout << pidname << "";
         printf(" yeah , accepted \n");
     }
-    char *message = "child:";
+    char message[30] =  "child:";
     strcat(message,pidname.c_str());
-    write(fd, message, strlen(message));
+    int writelen = write(fd, message, strlen(message));
+    printf("writelen:%d\n,messagelen:%d\n",writelen,strlen(message));
     close(fd);
 }
 
